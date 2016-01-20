@@ -11,18 +11,48 @@
         padding: 0;
       }
       #map {
-        height: 100%;
+        height: 100vh;
       }
     </style>
+
+    <!-- ColorBox part -->
+    <link rel="stylesheet" href="colorbox.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.colorbox.js"></script>
+
   </head>
-  <body>
+  <body><!--
+    <p><a class="group1" href="./content/ohoopee1.jpg" title="Me and my grandfather on the Ohoopee." style="display:none">Grouped Photo 1</a></p>
+    <p><a class="group1" href="./content/ohoopee2.jpg" title="On the Ohoopee as a child" style="display:none">Grouped Photo 2</a></p>
+    <p><a class="group1" href="./content/ohoopee3.jpg" title="On the Ohoopee as an adult" style="display:none">Grouped Photo 3</a></p>
+    -->
     <div id="map"></div>
+    <div id="menu">
+    <ul id="navigationMenu">
+      <li>
+        <a class="home" href="#">
+              <span>Accueil</span>
+          </a>
+      </li>
+
+      <li>
+        <a class="about" href="#">
+              <span>A propos</span>
+          </a>
+      </li>
+
+      <li>
+        <a class="contact" href="#">
+              <span>Contactez nous</span>
+          </a>
+      </li>
+    </ul>
+  </div>
     <script>
 
-// This example displays a marker at the center of Australia.
-// When the user clicks the marker, an info window opens.
-
 function initMap() {
+
   var doua = {lat: 45.783341, lng: 4.874119};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
@@ -30,13 +60,14 @@ function initMap() {
   });
 
   var contentStringInfo = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
       '<h1 id="firstHeading" class="firstHeading">Le meilleur IUT de la Doua</h1>'+
       '<div id="bodyContent">'+
       '<p>C\'est le meilleur, rien à redire.</p>'+
-      '</div>'+
-      '<img src="test.jpg" width="600px"'+
+      '<p><img src="test.jpg" width="600px"></p>'+
+      '<p><a class="group1" href="./images/BDE1.jpg" title="BDE 1" rel="group1" onclick=\'$(this).colorbox({rel:\"group1\",href:\"./images/BDE1.jpg\"});return false\'>BDE 1</a></p>'+
+      '<p><a class="group1" href="./images/BDE2.jpg" title="BDE 2" rel="group1" onclick=\'$(this).colorbox({rel:\"group1\",href:\"./images/BDE2.jpg\"});return false\'>BDE 2</a></p>'+
+      '<p><a class="group1" href="./images/cours.jpg" title="Salle de cours" rel="group1" onclick=\'$(this).colorbox({rel:\"group1\",href:\"./images/cours.jpg\"});return false\'>Salle de cours</a></p>'+
+      '<p><a class="group1" href="./images/info.jpg" title="Salle informatique" rel="group1" onclick=\'$(this).colorbox({rel:\"group1\",href:\"./images/info.jpg\"});return false\'>Salle informatique</a></p>'+
       '</div>';
 
   var contentStringGEA = '<div id="content">'+
@@ -44,7 +75,7 @@ function initMap() {
       '</div>'+
       '<h1 id="firstHeading" class="firstHeading">L\'IUT GEA</h1>'+
       '<div id="bodyContent">'+
-      '<p>Un peu moins bien mais c\'est un IUT quand même.</p>'+
+      '<p>Un autre département</p>'+
       '</div>'+
       '</div>';
 
