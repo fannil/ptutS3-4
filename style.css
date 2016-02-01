@@ -28,6 +28,7 @@ body{
 	position:absolute;
 	overflow:hidden;
 	background-color:#ffdab9;
+	
 	/* Text properties */
 	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
 	font-size:18px;
@@ -48,11 +49,22 @@ body{
 	/* The background sprite: */
 	/*background:url('img/navigation.jpg') no-repeat;*/
 	top:50px;
-	background-color : #ffdab9;
 	height:39px;
 	width:38px;
 	display:block;
 	position:relative;
+}
+
+.home {
+	background-image : url(images/home.svg);
+}
+
+.about{
+	background-image : url(images/info.svg);
+}
+
+.contact {
+	background-image : url(images/users.svg);
 }
 
 /* General hover styles */
@@ -121,4 +133,34 @@ div#menu{
 	top:10px;
 	left:10px;
 	background-image:none;
+}
+
+/*Style menu département*/
+
+.group1{
+	font-size: 1em;
+	position: relative;
+	top: -0.2em;
+	display: inline-block;
+	width: 100%;
+	padding: 0.5em 0.5em 0.8em;
+	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-align: left;
+	color: rgb(7, 16, 15);
+	font-size: 1.2em;
+	background: #D0D0D0 ;	
+	border: none;
+	border-bottom: 4px solid rgb(221, 221, 221);
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	text-decoration:none;
+}
+
+/*style image menu */
+
+.group1 img {
+	width:100px;
+	height :50;
+	float:right;
 }
