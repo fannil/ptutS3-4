@@ -28,6 +28,7 @@ body{
 	position:absolute;
 	overflow:hidden;
 	background-color:#ffdab9;
+	
 	/* Text properties */
 	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
 	font-size:18px;
@@ -48,11 +49,25 @@ body{
 	/* The background sprite: */
 	/*background:url('img/navigation.jpg') no-repeat;*/
 	top:50px;
-	background-color : #ffdab9;
 	height:39px;
 	width:38px;
 	display:block;
 	position:relative;
+}
+
+.home {
+	background-image : url(images/home.svg);
+}
+
+.about{
+	background-image : url(images/info.svg);
+}
+
+.contact {
+	background-image : url(images/users.svg);
+}
+.marq {
+	background-image : url(images/list.svg);
 }
 
 /* General hover styles */
@@ -86,26 +101,6 @@ body{
 	text-shadow:1px 1px 0 #44a8d0;
 }
 
-/* Orange Button */
-
-#navigationMenu .services { background-position:-76px 0;}
-#navigationMenu .services:hover { background-position:-76px -39px;}
-#navigationMenu .services span{
-	background-color:#c86c1f;
-	color:#5a3517;
-	text-shadow:1px 1px 0 #d28344;
-}
-
-/* Yellow Button */
-
-#navigationMenu .portfolio { background-position:-114px 0;}
-#navigationMenu .portfolio:hover{ background-position:-114px -39px;}
-#navigationMenu .portfolio span{
-	background-color:#d0a525;
-	color:#604e18;
-	text-shadow:1px 1px 0 #d8b54b;
-}
-
 /* Purple Button */
 
 #navigationMenu .contact { background-position:-152px 0;}
@@ -115,10 +110,57 @@ body{
 	color:#ffdab9;
 	text-shadow:1px 1px 0 #d244a6;
 }
-
+/* Nouv Button*/
+#navigationMenu .marq a {background-color:#1e8bb4;}
+#navigationMenu .marq {	background-position:0 0;}
+#navigationMenu .marq:hover {	background-position:0 -39px;}
+#navigationMenu .marq span{
+	background-color:#8040A4;
+	color:#0C032A;
+	text-shadow:1px 1px 0 #8265A6;
+}
+/* Nouv Button*/
+#navigationMenu .autre a {background-color:#1e8bb4;}
+#navigationMenu .autre {background-position:0 0;}
+#navigationMenu .autre:hover {	background-position:0 -39px;}
+#navigationMenu .autre span{
+	background-color:#EC8816;
+	color:#3d4f0c;
+	text-shadow:1px 1px 0 #EAB373;
+}
 div#menu{
 	position:absolute;
 	top:10px;
 	left:10px;
 	background-image:none;
+}
+
+/*Style menu département*/
+
+.group1{
+	font-size: 1em;
+	position: relative;
+	top: -0.2em;
+	display: inline-block;
+	width: 100%;
+	padding: 0.5em 0.5em 0.8em;
+	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	text-align: left;
+	color: rgb(7, 16, 15);
+	font-size: 1.2em;
+	background: #D0D0D0 ;	
+	border: none;
+	border-bottom: 4px solid rgb(221, 221, 221);
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	text-decoration:none;
+}
+
+/*style image menu */
+
+.group1 img {
+	width:100px;
+	height :50;
+	float:right;
 }
