@@ -1,0 +1,149 @@
+<?php include("./db.php"); 
+  $dpts = getIdDepartements();
+  //var_dump(getImages(1));die();
+?>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Visite virtuelle de la Doua</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100vh;
+      }
+    </style>
+
+    <!-- ColorBox part -->
+    <link rel="stylesheet" href="colorbox.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.colorbox.js"></script>
+
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="menu">
+    <ul id="navigationMenu">
+      <li>
+        <a class="home" href="#">
+              <span>Accueil</span>
+          </a>
+      </li>
+
+      <li>
+        <a class="about" href="#">
+              <span>A propos</span>
+          </a>
+      </li>
+
+      <li>
+        <a class="contact" href="#">
+              <span>Contactez nous</span>
+          </a>
+      </li>
+          <li>
+        <a class="marq" href="#">
+              <span>Liste des marqueurs</span>
+        </a>
+      </li>
+          <li>
+        <a class="autre" href="#">
+              <span>??</span>
+          </a>
+      </li>
+
+
+    </ul>
+  </div>
+    <script>
+
+function initMap() {
+  var doua = {lat: 45.783341, lng: 4.874119};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 16,
+    center: doua
+  });
+
+  var infoWindow = new google.maps.InfoWindow();
+
+  <?php
+    foreach($dpts as $idDepartement){
+      $infos = getInfos($idDepartement);
+?>
+    var contentString<?php echo $idDepartement; ?> = '<div id=\"content\">'+
+      '<h1 id=\"firstHeading\" class=\"firstHeading\"><?php echo $infos['titre']; ?></h1>' +
+      '<div id=\"bodyContent\">'+
+      '<p> <?php echo $infos['description']; ?></p>'+
+      <?php
+      $images = getImages($idDepartement);
+      foreach($images as $image){ 
+        ?>
+        '<p><a class=\"group<?php echo $idDepartement; ?> \" href=\"./images/<?php echo $image["link"]; ?>\" title=\"<?php echo $image["nom"]; ?>\" rel=\"group<?php echo $idDepartement; ?>\" onmouseover=\'$(this).colorbox({rel:\"group<?php echo $idDepartement; ?>\",href:\"./images/<?php echo $image["link"]; ?>\", maxWidth:\"95%\", maxHeight:\"95%\"});return false\'><?php echo $image["nom"];?></a></p>' +      //Utiliser this.child, event listender sur le chargement de la bulle
+        <?php }
+      ?>
+      
+      '</div>';
+
+      var iutInfo = {lat: <?php echo $infos['lat'];  ?>, lng: <?php echo $infos['lng'];  ?>};
+
+      var marker<?php echo $idDepartement; ?> = new google.maps.Marker({
+      position: iutInfo,
+      map: map,
+      title: '<?php echo $infos['titre'];  ?>'
+    });
+
+  marker<?php echo $idDepartement; ?>.addListener('click', function() {
+    infoWindow.close();
+    infoWindow.setContent(contentString<?php echo $idDepartement; ?>);
+    infoWindow.open(map, marker<?php echo $idDepartement; ?> );
+  });
+
+    <?php }  ?>
+/*
+  var contentString = '<div id="content">'+
+      '<h1 id="firstHeading" class="firstHeading">L\'IUT GEA</h1>'+
+      '<div id="bodyContent">'+
+      '<p>Un autre département</p>'+
+      '</div>'+
+      '</div>';
+  
+  var infowindowGEA = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  
+
+  var iutGEA = {lat: 45.786188, lng: 4.882784};
+  var markerGEA = new google.maps.Marker({
+    position: iutGEA,
+    map: map,
+    title: 'IUT, Batiment GEA'
+  });
+
+
+  markerGEA.addListener('click', function() {
+    infowindowInfo.close();
+    infowindowGEA.open(map, markerGEA);
+  });
+  */
+}
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-j0TS4oRWE6F_q_-SdODcOPsvQDAK8AI&signed_in=true&callback=initMap">
+  </script>
+
+  <script type="text/javascript">
+    function test(){
+      alert("OK");
+    }
+  </script>
+  </body>
+</html>
