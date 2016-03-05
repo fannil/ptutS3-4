@@ -81,14 +81,17 @@ function initMap() {
       '<h1 id=\"firstHeading\" class=\"firstHeading\"><?php echo $infos['titre']; ?></h1>' +
       '<div id=\"bodyContent\">'+
       '<p> <?php echo $infos['description']; ?></p>'+
+      '<div class="imgLinks">' +
       <?php
       $images = getImages($idDepartement);
       foreach($images as $image){ 
         ?>
-        '<p><a class=\"group<?php echo $idDepartement; ?> \" href=\"./images/<?php echo $image["link"]; ?>\" title=\"<?php echo $image["nom"]; ?>\" rel=\"group<?php echo $idDepartement; ?>\" onmouseover=\'$(this).colorbox({rel:\"group<?php echo $idDepartement; ?>\",href:\"./images/<?php echo $image["link"]; ?>\", maxWidth:\"95%\", maxHeight:\"95%\"});return false\'><?php echo $image["nom"];?></a></p>' +      //Utiliser this.child, event listender sur le chargement de la bulle
+        '<p class = "imgLink"><a class=\"group<?php echo $idDepartement; ?> imgLink\" href=\"./images/<?php echo $image["link"]; ?>\" title=\"<?php echo $image["nom"]; ?>\" ' +
+        'rel=\"group<?php echo $idDepartement; ?>\" onmouseover=\'$(this).colorbox({rel:\"group<?php echo $idDepartement; ?>\",href:\"./images/<?php echo $image["link"]; ?>\", maxWidth:\"95%\", maxHeight:\"95%\"});return false\'>' +
+        '<img src = \"./images/<?php echo $image["link"]; ?>\"/></a></p>' +      //Utiliser this.child, event listender sur le chargement de la bulle
         <?php }
       ?>
-      
+      '</div>'
       '</div>';
 
       var iutInfo = {lat: <?php echo $infos['lat'];  ?>, lng: <?php echo $infos['lng'];  ?>};
@@ -106,33 +109,6 @@ function initMap() {
   });
 
     <?php }  ?>
-/*
-  var contentString = '<div id="content">'+
-      '<h1 id="firstHeading" class="firstHeading">L\'IUT GEA</h1>'+
-      '<div id="bodyContent">'+
-      '<p>Un autre département</p>'+
-      '</div>'+
-      '</div>';
-  
-  var infowindowGEA = new google.maps.InfoWindow({
-    content: contentString
-  });
-
-  
-
-  var iutGEA = {lat: 45.786188, lng: 4.882784};
-  var markerGEA = new google.maps.Marker({
-    position: iutGEA,
-    map: map,
-    title: 'IUT, Batiment GEA'
-  });
-
-
-  markerGEA.addListener('click', function() {
-    infowindowInfo.close();
-    infowindowGEA.open(map, markerGEA);
-  });
-  */
 }
 
     </script>
@@ -140,10 +116,5 @@ function initMap() {
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-j0TS4oRWE6F_q_-SdODcOPsvQDAK8AI&signed_in=true&callback=initMap">
   </script>
 
-  <script type="text/javascript">
-    function test(){
-      alert("OK");
-    }
-  </script>
   </body>
 </html>

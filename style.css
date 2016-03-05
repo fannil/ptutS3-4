@@ -137,7 +137,8 @@ div#menu{
 
 /*Style menu département*/
 
-.group1{
+.imgLink{
+	/*
 	font-size: 1em;
 	position: relative;
 	top: -0.2em;
@@ -155,12 +156,19 @@ div#menu{
 	letter-spacing:0.6px;
 	white-space:nowrap;
 	text-decoration:none;
+	*/
+	width : 40%;
+	display : inline;
 }
 
 /*style image menu */
 
-.group1 img {
-	width:100px;
-	height :50;
-	float:right;
+.imgLink img{
+	width: 200px;
+	margin : 10px;
+}
+
+.imgLinks{
+	margin: 1em;
+	max-width: 500px;
 }
