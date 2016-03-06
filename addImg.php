@@ -12,31 +12,8 @@
 
   </head>
   <body>
-  	<h1>Ajout d'un département</h1>
-
-  	<form method = "POST" action = "handleAdd.php">
-  		<p>
-  			Nom du département : 
-  			<input type = 'text' id = "nomDept" name = "nomDept" required/>
-  		</p>
-  		<p>
-  			Description du département : </p>
-  			<textarea id = "desc" name = "desc" rows = "10" cols = "50" required></textarea>
-  		<p>
-  			Latitude : 
-  			<input type = 'number' step = "any" id = "lat" name = "lat" required/>
-  		</p>
-  		<p>
-  			Longitude : 
-  			<input type = 'number' step = "any" id = "lng" name = "lng" required/>
-  		</p>
-  		<button type="submit" id="ajouter">Ajouter</button>
-  	</form>
-
-    <script type="text/javascript">check();</script>
-
-    <!--
-    <form action = "upload.php" class = "dropzone" id = "imgAdd"></form>
+    <h1>Ajoutez des images</img>
+  <form action = "upload.php" class = "dropzone" id = "imgAdd"></form>
 
     <script>
 
@@ -57,7 +34,7 @@
             $.each(data, function(key, value){
               var mockfile = {name: value.name, size: value.size};
               thisDropzone.emit("addedfile", mockfile);
-              thisDropzone.createThumbnailFromUrl(mockfile, 'dptImg/' + value.name);
+              thisDropzone.createThumbnailFromUrl(mockfile, 'dptImg/<?php echo(getCookieId()); ?>/' + value.name);
               thisDropzone.emit("success", mockfile);
               thisDropzone.emit("complete", mockfile);
             });
@@ -74,9 +51,6 @@
       }
 
 
-
-
     </script>
-    -->
   </body>
 </html>

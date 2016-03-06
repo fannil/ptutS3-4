@@ -21,10 +21,10 @@
     </style>
 
     <!-- ColorBox part -->
-    <link rel="stylesheet" href="colorbox.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style/colorbox.css" />
+    <link rel="stylesheet" href="style/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="jquery.colorbox.js"></script>
+    <script src="js/jquery.colorbox.js"></script>
 
   </head>
   <body>
@@ -87,8 +87,8 @@ function initMap() {
       foreach($images as $image){ 
         ?>
         '<p class = "imgLink"><a class=\"group<?php echo $idDepartement; ?> imgLink\" href=\"./images/<?php echo $image["link"]; ?>\" title=\"<?php echo $image["nom"]; ?>\" ' +
-        'rel=\"group<?php echo $idDepartement; ?>\" onmouseover=\'$(this).colorbox({rel:\"group<?php echo $idDepartement; ?>\",href:\"./images/<?php echo $image["link"]; ?>\", maxWidth:\"95%\", maxHeight:\"95%\"});return false\'>' +
-        '<img src = \"./images/<?php echo $image["link"]; ?>\"/></a></p>' +      //Utiliser this.child, event listender sur le chargement de la bulle
+        'rel=\"group<?php echo $idDepartement; ?>\" onmouseover=\'$(this).colorbox({rel:\"group<?php echo $idDepartement; ?>\",href:\"./dptImg/<?php echo $idDepartement; ?>/<?php echo $image["link"]; ?>\", maxWidth:\"95%\", maxHeight:\"95%\"});return false\'>' +
+        '<img src = \"./dptImg/<?php echo $idDepartement; ?>/<?php echo $image["link"]; ?>\"/></a></p>' +      //Utiliser this.child, event listender sur le chargement de la bulle
         <?php }
       ?>
       '</div>'

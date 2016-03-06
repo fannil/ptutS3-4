@@ -1,0 +1,16 @@
+#rmv{
+	width: 25px;
+	height: 25px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+}
+
+#rmv:hover{
+	cursor: pointer;
+}
+
+.dropzone{
+	margin-top: 15px;
+}
