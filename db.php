@@ -87,11 +87,12 @@ function getCookieId(){
 function addImg($path, $dpt){
 
 	$bdd = Connect_db();
-	$SQL_Query = "insert into images values (null, ?, ?, ?)";
+	$SQL_Query = "insert into Images values (null, ?, ?, ?)";
 
     $query = $bdd -> prepare($SQL_Query);
 
     $name = pathinfo($path, PATHINFO_FILENAME);
+    echo($name);
     $query->bindParam(1, $name);
     $query->bindParam(2, $path);
     $query->bindParam(3, $dpt);
@@ -103,10 +104,40 @@ function addImg($path, $dpt){
 
 function suppImg($path, $dpt){
 	$bdd = Connect_db();
-	$SQL_Query = "delete from images where idDepartement = " . $dpt . " and lienImage = '" . $path . "'";
+	$SQL_Query = "delete from Images where idDepartement = " . $dpt . " and lienImage = '" . $path . "'";
 
     $query = $bdd -> prepare($SQL_Query);
 
+    $query->execute();
+}
+
+function updateDpt($nomDept, $desc, $lat, $lng, $idDepartement){
+	$bdd = Connect_db();
+	$SQL_Query = "update Departement set nomDepartement = ?,
+	 description = ?,
+	 lat = ?,
+	 lng = ?
+	 where idDepartement = ". $idDepartement;
+	 
+    $query = $bdd -> prepare($SQL_Query);
+    $query->bindParam(1, $nomDept);
+    $query->bindParam(2, $desc);
+    $query->bindParam(3, $lat);
+    $query->bindParam(4, $lng);
+
+    $query->execute();
+}
+
+function deleteDpt($idDepartement){
+	$bdd = Connect_db();
+	$SQL_Query = "delete from Departement where idDepartement = ". $idDepartement;
+	
+	$query = $bdd -> prepare($SQL_Query);
+    $query->execute();
+
+    $SQL_Query = "delete from Images where idDepartement = ". $idDepartement;
+
+    $query = $bdd -> prepare($SQL_Query);
     $query->execute();
 }
 ?>

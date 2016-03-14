@@ -56,18 +56,18 @@ body{
 }
 
 .home {
-	background-image : url(images/home.svg);
+	background-image : url(../images/home.svg);
 }
 
 .about{
-	background-image : url(images/info.svg);
+	background-image : url(../images/info.svg);
 }
 
 .contact {
-	background-image : url(images/users.svg);
+	background-image : url(../images/users.svg);
 }
 .marq {
-	background-image : url(images/list.svg);
+	background-image : url(../images/list.svg);
 }
 
 /* General hover styles */

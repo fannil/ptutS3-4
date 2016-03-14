@@ -1,3 +1,7 @@
+body{
+	font-family: 'Lato', sans-serif;
+}
+
 #rmv{
 	width: 25px;
 	height: 25px;
@@ -13,4 +17,24 @@
 
 .dropzone{
 	margin-top: 15px;
+}
+
+.tab{
+	margin-left: 40px;
+}
+
+.dptMod{
+	margin-bottom: 50px;
+}
+
+.err{
+	color: red;
+	transition: 0.2s;
+	font-weight: bold;
+}
+
+.success{
+	color: green;
+	transition: 0.2s;
+	font-weight: bold;
 }
