@@ -58,7 +58,7 @@
 
     </script>
 
-    <p><a href="ajout.php"><img src = "images/ok.png" width = "15px"/>Terminer</a></p>
+    <p><a href="modifier.php"><img src = "images/ok.png" width = "15px"/>Terminer</a></p>
 
   </body>
   

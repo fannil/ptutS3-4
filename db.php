@@ -132,6 +132,8 @@ function updateDpt($nomDept, $desc, $lat, $lng, $idDepartement){
 }
 
 function deleteDpt($idDepartement){
+	$dir = "dptImg/" . $idDepartement;
+
 	$bdd = Connect_db();
 	$SQL_Query = "delete from Departement where idDepartement = ". $idDepartement;
 	
@@ -142,6 +144,9 @@ function deleteDpt($idDepartement){
 
     $query = $bdd -> prepare($SQL_Query);
     $query->execute();
+
+    array_map('unlink', glob("$dir/*.*"));
+    rmdir($dir);
 }
 
 function isConnected(){

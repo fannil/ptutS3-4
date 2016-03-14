@@ -1,4 +1,5 @@
-<?php include("./db.php"); 
+<?php include("./db.php");
+if(isConnected()) header("Location: modifier.php");
 ?>
 <!DOCTYPE html>
 <html>
