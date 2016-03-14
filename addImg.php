@@ -11,8 +11,13 @@
     <script src = "js/dropzone.js"></script>
 
   </head>
+  <?php 
+  if(isConnected()){
+    include('header.php'); 
+    ?>
+
   <body>
-    <h1>Ajoutez des images</img>
+    <h1>Ajoutez des images</h1>
   <form action = "upload.php" class = "dropzone" id = "imgAdd"></form>
 
     <script>
@@ -52,5 +57,16 @@
 
 
     </script>
+
+    <p><a href="ajout.php"><img src = "images/ok.png" width = "15px"/>Terminer</a></p>
+
   </body>
+  
+  <?php }
+  else {
+    echo("<p class = 'err'>Erreur de connexion</p><p>Vous allez être redirigé vers la page de connexion</p>");
+    header( "refresh:3; url=admin.php" );
+  }
+  ?>
+
 </html>

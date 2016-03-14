@@ -9,6 +9,10 @@
     <script src="js/jquery.js"></script>
 
   </head>
+  <?php 
+  if(isConnected()){
+    include('header.php'); 
+    ?>
   <body>
   	<h1>Ajout d'un département</h1>
 
@@ -32,4 +36,10 @@
   	</form>
 
   </body>
+  <?php } 
+  else {
+    echo("<p class = 'err'>Erreur de connexion</p><p>Vous allez être redirigé vers la page de connexion</p>");
+    header( "refresh:3; url=admin.php" );
+  }
+  ?>
 </html>

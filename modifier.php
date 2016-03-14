@@ -9,8 +9,14 @@
     <link rel="stylesheet" href="style/dropzone.css" />
     <script src="js/jquery.js"></script>
     <script src = "js/dropzone.js"></script>
+    <script src = "js/ack.js"></script>
 
   </head>
+  <?php 
+  if(isConnected()){
+    include('header.php'); 
+  ?>
+
   <body>
   	
     <h1>Modification d'un département</h1>
@@ -109,12 +115,16 @@
 
       <div class = "dptMod"><p>Id : <?php echo $idDepartement; ?>. Nom : <?php echo $infos['titre']; ?></p>
         <p class = "tab"><a href="modifier.php?id=<?php echo $idDepartement; ?>"><img src = "images/edit.png" width = "15px"/> Modifier</a>
-        <a href = "deleteDpt.php?id=<?php echo $idDepartement; ?>"><img src = "images/cross.png" width = "15px"/> Supprimer</a></p></div>
+        <a href = "deleteDpt.php?id=<?php echo $idDepartement; ?>" onclick = "ack()"><img src = "images/cross.png" width = "15px"/> Supprimer</a></p></div>
 
       <?php } ?>
     <?php } ?>
 
-
-
   </body>
+  <?php } 
+  else {
+    echo("<p class = 'err'>Erreur de connexion</p><p>Vous allez être redirigé vers la page de connexion</p>");
+    header( "refresh:3; url=admin.php" );
+  }
+  ?>  
 </html>

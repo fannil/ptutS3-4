@@ -1,5 +1,8 @@
 <?php
 
+ini_set('session.save_path', 'sessions');
+session_start();
+
 function Connect_db(){
 	$host="iutdoua-webetu.univ-lyon1.fr";
 	$user="p1402965";
@@ -139,5 +142,36 @@ function deleteDpt($idDepartement){
 
     $query = $bdd -> prepare($SQL_Query);
     $query->execute();
+}
+
+function isConnected(){
+	if(isset($_SESSION["id"]) && isset($_SESSION["pwd"])) return true;
+	else return false;
+}
+
+function connectAdmin($id, $pwd){
+	$bdd = Connect_db();
+	$SQL_Query = "select * from Admin where id = ? and pwd = ?";
+
+	$query = $bdd -> prepare($SQL_Query);
+    $query->bindParam(1, $id);
+    $query->bindParam(2, $pwd);
+
+    $i = 0;
+    $query->execute();
+
+    if($query->fetch()){
+    	session_start();
+    	$_SESSION['id'] = $id;
+    	$_SESSION['pwd'] = $pwd;
+
+    	return true;
+    }
+    else return false;
+}
+
+function disconnect(){
+	session_unset();
+	session_destroy();
 }
 ?>
