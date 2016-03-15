@@ -1,3 +1,7 @@
+html{
+    background-color: #dae4ec;
+}
+
 body{
 	font-family: 'Lato', sans-serif;
 }
@@ -18,13 +22,18 @@ body{
 .dropzone{
 	margin-top: 15px;
 }
-
+/*
 .tab{
 	margin-left: 40px;
 }
-
+*/
 .dptMod{
-	margin-bottom: 50px;
+	margin-bottom: 10px;
+    border: solid;
+    border-color: #d5d8db;
+    color: #4c565e;
+    padding: 14px 25px;
+    text-align: center; 
 }
 
 .err{
@@ -37,4 +46,102 @@ body{
 	color: green;
 	transition: 0.2s;
 	font-weight: bold;
+}
+
+.form-basic{
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 55px;
+    box-sizing: border-box;
+    background-color:  #ffffff;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.6);
+    font: bold 14px sans-serif;
+    text-align: center;
+}
+
+.form-basic h1{
+    display: inline-block;
+    box-sizing: border-box;
+    color:  #4c565e;
+    font-size: 24px;
+    padding: 0 10px 15px;
+    border-bottom: 3px solid #6caee0;
+    margin: 0;
+}
+.form-basic p{
+    text-align: center;
+}
+
+.form-basic input{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 240px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+}
+
+.form-basic textarea{
+    color:  #5f5f5f;
+    box-sizing: border-box;
+    width: 240px;
+    height: 80px;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    font: normal 13px sans-serif;
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    vertical-align: middle;
+    resize: vertical;
+}
+
+.form-basic button{
+    display: block;
+    border-radius: 2px;
+    background-color:  #6caee0;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 14px 22px;
+    border: 0;
+    margin: 40px 183px 0;
+}
+.form-basic a {
+	text-decoration: none;
+    margin-top: 10px
+}
+
+/*CSS header.php*/
+.hd {
+	float:left;
+	margin-top: 10px;
+}
+.hd a {
+	text-decoration: none;
+	background-color: #f3f3f3;
+	color: #4c565e;
+	padding: 14px 25px;
+	text-align: center; 
+	display: inline-block;
+    font-family: 'Lato', sans-serif;
+}
+
+@media (max-width: 600px) {
+
+    .form-basic{
+        padding: 30px;
+        max-width: 480px;
+    }
+
+    .form-basic select{
+        width: 240px;
+    }
+
+    .form-basic input[type=checkbox]{
+        margin-top:0;
+    }
+
+    .form-basic button{
+        margin: 0;
+    }
+
 }

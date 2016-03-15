@@ -17,49 +17,50 @@
     ?>
 
   <body>
+  <div class="form-basic">
     <h1>Ajoutez des images</h1>
-  <form action = "upload.php" class = "dropzone" id = "imgAdd"></form>
+    <form action = "upload.php" class = "dropzone" id = "imgAdd"></form>
 
-    <script>
+      <script>
 
-      Dropzone.options.imgAdd = {
-        addRemoveLinks: true,
+        Dropzone.options.imgAdd = {
+          addRemoveLinks: true,
 
-        removedfile: function(file) {
-          var _ref;
-          deleteFile(file.name);
-          return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
-        },
+          removedfile: function(file) {
+            var _ref;
+            deleteFile(file.name);
+            return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+          },
 
-        acceptedFiles: "image/*",
+          acceptedFiles: "image/*",
 
-        init: function(){
-          thisDropzone = this;
-          $.get('upload.php', function(data){
-            $.each(data, function(key, value){
-              var mockfile = {name: value.name, size: value.size};
-              thisDropzone.emit("addedfile", mockfile);
-              thisDropzone.createThumbnailFromUrl(mockfile, 'dptImg/<?php echo(getCookieId()); ?>/' + value.name);
-              thisDropzone.emit("success", mockfile);
-              thisDropzone.emit("complete", mockfile);
+          init: function(){
+            thisDropzone = this;
+            $.get('upload.php', function(data){
+              $.each(data, function(key, value){
+                var mockfile = {name: value.name, size: value.size};
+                thisDropzone.emit("addedfile", mockfile);
+                thisDropzone.createThumbnailFromUrl(mockfile, 'dptImg/<?php echo(getCookieId()); ?>/' + value.name);
+                thisDropzone.emit("success", mockfile);
+                thisDropzone.emit("complete", mockfile);
+              });
             });
-          });
+          }
+        };
+
+        function deleteFile($fileName){
+          $.ajax({
+            url: "delete.php",
+            type: "POST",
+            data: { 'name': $fileName}
+            });
         }
-      };
-
-      function deleteFile($fileName){
-        $.ajax({
-          url: "delete.php",
-          type: "POST",
-          data: { 'name': $fileName}
-          });
-      }
 
 
-    </script>
+      </script>
 
-    <p><a href="modifier.php"><img src = "images/ok.png" width = "15px"/>Terminer</a></p>
-
+      <p><a href="modifier.php"><img src = "images/ok.png" width = "15px"/>Terminer</a></p>
+    <div>
   </body>
   
   <?php }
