@@ -54,9 +54,9 @@
         </a>
       </li>
           <li>
-        <a class="autre" href="#">
-              <span>??</span>
-          </a>
+        <a class="admin" href="./admin.php">
+              <span>Administrateur</span>
+        </a>
       </li>
 
 

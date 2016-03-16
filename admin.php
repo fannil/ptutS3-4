@@ -26,8 +26,10 @@ if(isConnected()) header("Location: modifier.php");
       <form method = "POST" action = "connect.php">
         <p>Identifiant : <input type = "text" id = "id" name = "id" required></p>
         <p>Mot de passe : <input type = "password" id = "pwd" name = "pwd" required></p>
+        <button type="button" onclick="location.href='./index.php';">Retour index</button>
         <button type = "submit">Connexion</button>
       </form>
+
     <div>
   </body>
 </html>

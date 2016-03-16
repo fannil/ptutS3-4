@@ -69,6 +69,9 @@ body{
 .marq {
 	background-image : url(../images/list.svg);
 }
+.admin {
+	background-image : url(../images/tool.svg);
+}
 
 /* General hover styles */
 
@@ -101,7 +104,7 @@ body{
 	text-shadow:1px 1px 0 #44a8d0;
 }
 
-/* Purple Button */
+/* pink Button */
 
 #navigationMenu .contact { background-position:-152px 0;}
 #navigationMenu .contact:hover { background-position:-152px -39px;}
@@ -110,7 +113,7 @@ body{
 	color:#ffdab9;
 	text-shadow:1px 1px 0 #d244a6;
 }
-/* Nouv Button*/
+/* purple Button*/
 #navigationMenu .marq a {background-color:#1e8bb4;}
 #navigationMenu .marq {	background-position:0 0;}
 #navigationMenu .marq:hover {	background-position:0 -39px;}
@@ -119,11 +122,11 @@ body{
 	color:#0C032A;
 	text-shadow:1px 1px 0 #8265A6;
 }
-/* Nouv Button*/
-#navigationMenu .autre a {background-color:#1e8bb4;}
-#navigationMenu .autre {background-position:0 0;}
-#navigationMenu .autre:hover {	background-position:0 -39px;}
-#navigationMenu .autre span{
+/* Beige Button*/
+#navigationMenu .admin a {background-color:#1e8bb4;}
+#navigationMenu .admin {background-position:0 0;}
+#navigationMenu .admin:hover {	background-position:0 -39px;}
+#navigationMenu .admin span{
 	background-color:#EC8816;
 	color:#3d4f0c;
 	text-shadow:1px 1px 0 #EAB373;
