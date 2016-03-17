@@ -6,6 +6,7 @@
 
 body{
 	font-size:14px;
+
 	/* CSS3 Radial Gradients */
 	/*background-image:-moz-radial-gradient(center -100px 45deg, circle farthest-corner, #444 150px, #111 300px);
 	background-image:-webkit-gradient(radial, 50% 0, 150, 50% 0, 300, from(#ffdab9), to(#4c4137));*/
@@ -28,7 +29,7 @@ body{
 	position:absolute;
 	overflow:hidden;
 	background-color:#ffdab9;
-	
+
 	/* Text properties */
 	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
 	font-size:18px;
@@ -153,7 +154,7 @@ div#menu{
 	text-align: left;
 	color: rgb(7, 16, 15);
 	font-size: 1.2em;
-	background: #D0D0D0 ;	
+	background: #D0D0D0 ;
 	border: none;
 	border-bottom: 4px solid rgb(221, 221, 221);
 	letter-spacing:0.6px;
@@ -174,4 +175,56 @@ div#menu{
 .imgLinks{
 	margin: 1em;
 	max-width: 500px;
+}
+
+#dptsOverview{
+	position: absolute;
+	top:0px;
+	left: 50px;
+	width: 450px;
+	height: 100%;
+	background-color: #F5F5F5;
+	/*display:none;*/
+}
+
+#close{
+	float:right;
+	margin: 30px;
+}
+
+#close:hover{
+	cursor: pointer;
+}
+
+h2{
+	padding: 30px;
+	display: inline-block;
+	font-size: 20pt;
+	font-weight: bold;
+}
+
+hr{
+	margin-bottom: 20px;
+}
+
+.selectDpt{
+	padding: 10px 30px;
+	display: block;
+	font-size: 13pt;
+}
+
+.selectDpt:hover{
+	cursor: pointer;
+	background-color: #31aaaa;
+}
+
+#searchDpt{
+	margin: 10px 30px;
+	color:  #5f5f5f;
+	box-sizing: border-box;
+	width: 240px;
+	box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+	padding: 12px;
+	border: 1px solid #dbdbdb;
+
 }
