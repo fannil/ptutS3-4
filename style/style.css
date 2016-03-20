@@ -167,7 +167,7 @@ div#menu{
 
 /*style image menu */
 
-.imgLink img{
+.imgLinks img{
 	width: 200px;
 	margin : 10px;
 }
@@ -207,12 +207,12 @@ div#menu{
 	/*display:none;*/
 }
 
-#close{
+.close{
 	float:right;
 	margin: 30px;
 }
 
-#close:hover{
+.close:hover{
 	cursor: pointer;
 }
 
@@ -227,7 +227,7 @@ hr{
 	margin-bottom: 20px;
 }
 
-.selectDpt{
+.selectDpt, .overviewPar{
 	padding: 10px 30px;
 	display: block;
 	font-size: 13pt;

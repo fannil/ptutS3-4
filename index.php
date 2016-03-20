@@ -1,6 +1,42 @@
 <?php include("./db.php");
-$dpts = getIdDepartements();
+//$dpts = getIdDepartements();
+$dpts[0] = 1;
+/*
+foreach($dpts as $idDepartement){
+  $infos = getInfos($idDepartement);
+  ?>
+  var contentString<?php echo $idDepartement; ?> = '<div id=\"content\">'+
+  '<h1 id=\"firstHeading\" class=\"firstHeading\"><?php echo $infos['titre']; ?></h1>' +
+  '<div id=\"bodyContent\">'+
+  '<p> <?php echo $infos['description']; ?></p>'+
+  '<div class="imgLinks">' +
+  <?php
+  $images = getImages($idDepartement);
+  if($images.length != 0) {
+    $aTag = '<a href=\"#\" onclick=\'jQuery.slimbox([';
+    $imgs = "";
+    $first = true;
+  foreach($images as $image){
+    if($first){
+      $aTag .= '["dptImg/' . $idDepartement . '/' . $image["link"] . '", "' . $image["nom"] . '"]';
+      $first = false;
+    }
+    else{
+      $aTag .= '["dptImg/' . $idDepartement . '/' . $image["link"] . '", "' . $image["nom"] . '"]';
+    }
+    $imgs .= '<img src = "' . $image["link"] . '" alt = "' . $image["nom"] . '" />';
+  }
+
+  $aTag .= '], 0);return false;\' rel="groupe' . $idDepartement . '">';
+  echo ( '\'' . $aTag . '\' + \n\'');
+  echo ( '\'' . $imgs . ' </a>\' + \n');
+  //var_dump($aTag . "\n\n" . $imgs);die;
+}}
+
+die;
 //var_dump(getImages(1));die();
+*/
+
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +56,13 @@ $dpts = getIdDepartements();
   }
   </style>
 
-  <!-- ColorBox part -->
-  <link rel="stylesheet" href="style/colorbox.css" />
   <link rel="stylesheet" href="style/style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="js/jquery.colorbox.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <!-- slimbox -->
+  <link rel="stylesheet" href="style/slimbox/slimbox2.css" type="text/css" />
+  <script type="text/javascript" src="js/slimbox2.js"></script>
+
   <script> var mapMarkers = []; </script>
 
 </head>
@@ -34,7 +71,7 @@ $dpts = getIdDepartements();
   <div id="map"></div>
   <div id="dptsOverview">
     <div id="dptsOverviewContent">
-      <img id="close" src="images/cross.png" alt="Fermer" width="30px"/>
+      <img class="close" src="images/cross.png" alt="Fermer" width="30px" id="closeDpts"/>
       <h2>Liste des départements</h2><hr/>
       <input type="text" placeholder="Rechercher un département" id="searchDpt"></input>
       <?php
@@ -52,87 +89,101 @@ $dpts = getIdDepartements();
 
     <div id="aboutOverview">
       <div id="aboutOverviewContent">
-        <img id="close" src="images/cross.png" alt="Fermer" width="30px"/>
+        <img class="close" src="images/cross.png" alt="Fermer" width="30px" id="closeAbout"/>
         <h2>Qui sommes-nous ?</h2><hr/>
-        <p>   Nous sommes une petite équipe de quatre étudiants en deuxième année de DUT informatique et nous avons créé ce site dans le cadre de notre
+        <p class="overviewPar">   Nous sommes une petite équipe de quatre étudiants en deuxième année de DUT informatique et nous avons créé ce site dans le cadre de notre
           projet tuteuré de S3 et S4. Ce site est une maquette, il s'agit d'un outil permettant d'effectuer une visite virtuelle de plusieurs lieux
           mais aussi de configurer une visite virtuelle via une interface web (pages administrateurs). <br/><br/>
           Bonne visite sur notre site ! </p>
+        </div>
       </div>
-    </div>
 
-    <div id="contactOverview">
-    <div id="contactOverviewContent">
-      <img id="close" src="images/cross.png" alt="Fermer" width="30px"/>
-      <h2>Nous contacter</h2><hr/>
-      <input type="text" placeholder="Rechercher un département" id="searchDpt"></input>
+      <div id="contactOverview">
+        <div id="contactOverviewContent">
+          <img class="close" src="images/cross.png" alt="Fermer" width="30px" id="closeContact"/>
+          <h2>Nous contacter</h2><hr/>
+          <p class="overviewPar">Pour nous contacter, merci de nous envoyer un mail à l'adresse suivante : admin@admin.fr</p>
+        </div>
       </div>
-    </div>
 
-    <div id="menu">
-      <ul id="navigationMenu">
-        <li>
-          <a class="home" href="#">
-            <span>Accueil</span>
-          </a>
-        </li>
+      <div id="menu">
+        <ul id="navigationMenu">
+          <li>
+            <a class="home" href="#">
+              <span>Accueil</span>
+            </a>
+          </li>
 
-        <li>
-          <a class="about" href="#" onclick="showAbout();">
-            <span>À propos</span>
-          </a>
-        </li>
+          <li>
+            <a class="about" href="#" onclick="showAbout();">
+              <span>A propos</span>
+            </a>
+          </li>
 
-        <li>
-          <a class="contact" href="#" onclick="showContact();">
-            <span>Contactez nous</span>
-          </a>
-        </li>
-        <li>
-          <a class="marq" href="#" onclick="showDpts();">
-            <span>Liste des marqueurs</span>
-          </a>
-        </li>
-        <li>
-          <a class="admin" href="./admin.php">
-            <span>Administrateur</span>
-          </a>
-        </li>
+          <li>
+            <a class="contact" href="#" onclick="showContact();">
+              <span>Contactez nous</span>
+            </a>
+          </li>
+          <li>
+            <a class="marq" href="#" onclick="showDpts();">
+              <span>Liste des marqueurs</span>
+            </a>
+          </li>
+          <li>
+            <a class="admin" href="./admin.php">
+              <span>Administrateur</span>
+            </a>
+          </li>
 
 
-      </ul>
-    </div>
+        </ul>
+      </div>
 
-    <script>
+      <script>
 
-    function initMap() {
-      var doua = {lat: 45.783341, lng: 4.874119};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: doua
-      });
+      function initMap() {
+        var doua = {lat: 45.783341, lng: 4.874119};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          center: doua
+        });
 
-      var infoWindow = new google.maps.InfoWindow();
+        var infoWindow = new google.maps.InfoWindow();
 
-      <?php
-      foreach($dpts as $idDepartement){
-        $infos = getInfos($idDepartement);
-        ?>
-        var contentString<?php echo $idDepartement; ?> = '<div id=\"content\">'+
-        '<h1 id=\"firstHeading\" class=\"firstHeading\"><?php echo $infos['titre']; ?></h1>' +
-        '<div id=\"bodyContent\">'+
-        '<p> <?php echo $infos['description']; ?></p>'+
-        '<div class="imgLinks">' +
         <?php
-        $images = getImages($idDepartement);
-        foreach($images as $image){
+        foreach($dpts as $idDepartement){
+          $infos = getInfos($idDepartement);
           ?>
-          '<p class = "imgLink"><a class=\"group<?php echo $idDepartement; ?> imgLink\" href=\"./images/<?php echo $image["link"]; ?>\" title=\"<?php echo $image["nom"]; ?>\" ' +
-          'rel=\"group<?php echo $idDepartement; ?>\" onmouseover=\'$(this).colorbox({rel:\"group<?php echo $idDepartement; ?>\",href:\"./dptImg/<?php echo $idDepartement; ?>/<?php echo $image["link"]; ?>\", maxWidth:\"95%\", maxHeight:\"95%\"});return false\'>' +
-          '<img src = \"./dptImg/<?php echo $idDepartement; ?>/<?php echo $image["link"]; ?>\"/></a></p>' +      //Utiliser this.child, event listender sur le chargement de la bulle
-          <?php }
+          var contentString<?php echo $idDepartement; ?> = '<div id=\"content\">'+
+          '<h1 id=\"firstHeading\" class=\"firstHeading\"><?php echo $infos['titre']; ?></h1>' +
+          '<div id=\"bodyContent\">'+
+          '<p> <?php echo $infos['description']; ?></p>'+
+          '<div class="imgLinks">' +
+          <?php
+          $images = getImages($idDepartement);
+          if(count($images) != 0) {
+            $aTag = '<a href=\"#\" onclick=\\\'jQuery.slimbox([';
+            $imgs = "";
+            $first = true;
+          foreach($images as $image){
+            if($first){
+              $aTag .= '[\\"dptImg/' . $idDepartement . '/' . $image["link"] . '\\", \\"' . $image["nom"] . '\\"]';
+              $first = false;
+            }
+            else{
+              $aTag .= ', [\\"dptImg/' . $idDepartement . '/' . $image["link"] . '\\", \\"' . $image["nom"] . '\\"]';
+            }
+            $imgs .= '<img src = "dptImg/' . $idDepartement . "/" . $image["link"] . '" alt = "' . $image["nom"] . '" />';
+          }
+
+          $aTag .= '], 0);return false;\\\' rel="groupe' . $idDepartement . '">';
+          echo ( '\'' . $aTag . '\' + ');
+          echo ( '\'' . $imgs . ' </a>\' +');
+          //var_dump($aTag . "\n\n" . $imgs);die;
+        }
           ?>
-          '</div>'
+          '</div>' +
           '</div>';
 
           var iutInfo = {lat: <?php echo $infos['lat'];  ?>, lng: <?php echo $infos['lng'];  ?>};
@@ -169,9 +220,11 @@ $dpts = getIdDepartements();
           else{
             $("#dptsOverview").show('slide', {direction: 'left'}, 200);
             showed = true;
+            if(showedcont) showContact();
+            if(showedab) showAbout();
           }
         }
-        
+
         var showedab = false;
         function showAbout(){
           //$('#aboutOverview').toggle('slow', function(){});
@@ -182,6 +235,8 @@ $dpts = getIdDepartements();
           else{
             $("#aboutOverview").show('slide', {direction: 'left'}, 200);
             showedab = true;
+            if(showedcont) showContact();
+            if(showed) showDpts();
           }
         }
 
@@ -195,14 +250,26 @@ $dpts = getIdDepartements();
           else{
             $("#contactOverview").show('slide', {direction: 'left'}, 200);
             showedcont = true;
+            if(showed) showDpts();
+            if(showedab) showAbout();
           }
         }
 
         $(document).ready(function(){
+          //Assigner l'action à la croix de fermeture pour chaque panneau
           $("#dptsOverview").hide();
-          $("#close").click(function(){
+          $("#closeDpts").click(function(){
             showDpts();
           });
+          $("#contactOverview").hide();
+          $("#closeContact").click(function(){
+            showContact();
+          });
+          $("#aboutOverview").hide();
+          $("#closeAbout").click(function(){
+            showAbout();
+          });
+
           $(".selectDpt").click(function(){
             var markerId = $(this).attr('id');
             google.maps.event.trigger(mapMarkers[markerId], 'click');
@@ -227,20 +294,6 @@ $dpts = getIdDepartements();
             });
           });
 
-        });
-
-        $(document).ready(function(){
-          $("#aboutOverview").hide();
-          $("#close").click(function(){
-            showAbout();
-          });
-        });
-        
-        $(document).ready(function(){
-          $("#contactOverview").hide();
-          $("#close").click(function(){
-            showContact();
-          });
         });
 
         </script>
