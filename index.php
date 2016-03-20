@@ -50,6 +50,25 @@ $dpts = getIdDepartements();
       </div>
     </div>
 
+    <div id="aboutOverview">
+      <div id="aboutOverviewContent">
+        <img id="close" src="images/cross.png" alt="Fermer" width="30px"/>
+        <h2>Qui sommes-nous ?</h2><hr/>
+        <p>   Nous sommes une petite équipe de quatre étudiants en deuxième année de DUT informatique et nous avons créé ce site dans le cadre de notre
+          projet tuteuré de S3 et S4. Ce site est une maquette, il s'agit d'un outil permettant d'effectuer une visite virtuelle de plusieurs lieux
+          mais aussi de configurer une visite virtuelle via une interface web (pages administrateurs). <br/><br/>
+          Bonne visite sur notre site ! </p>
+      </div>
+    </div>
+
+    <div id="contactOverview">
+    <div id="contactOverviewContent">
+      <img id="close" src="images/cross.png" alt="Fermer" width="30px"/>
+      <h2>Nous contacter</h2><hr/>
+      <input type="text" placeholder="Rechercher un département" id="searchDpt"></input>
+      </div>
+    </div>
+
     <div id="menu">
       <ul id="navigationMenu">
         <li>
@@ -59,13 +78,13 @@ $dpts = getIdDepartements();
         </li>
 
         <li>
-          <a class="about" href="#">
-            <span>A propos</span>
+          <a class="about" href="#" onclick="showAbout();">
+            <span>À propos</span>
           </a>
         </li>
 
         <li>
-          <a class="contact" href="#">
+          <a class="contact" href="#" onclick="showContact();">
             <span>Contactez nous</span>
           </a>
         </li>
@@ -152,6 +171,32 @@ $dpts = getIdDepartements();
             showed = true;
           }
         }
+        
+        var showedab = false;
+        function showAbout(){
+          //$('#aboutOverview').toggle('slow', function(){});
+          if(showedab){
+            $("#aboutOverview").hide('slide', {direction: 'left'}, 200);
+            showedab = false;
+          }
+          else{
+            $("#aboutOverview").show('slide', {direction: 'left'}, 200);
+            showedab = true;
+          }
+        }
+
+        var showedcont = false;
+        function showContact(){
+          //$('#aboutOverview').toggle('slow', function(){});
+          if(showedcont){
+            $("#contactOverview").hide('slide', {direction: 'left'}, 200);
+            showedcont = false;
+          }
+          else{
+            $("#contactOverview").show('slide', {direction: 'left'}, 200);
+            showedcont = true;
+          }
+        }
 
         $(document).ready(function(){
           $("#dptsOverview").hide();
@@ -182,6 +227,20 @@ $dpts = getIdDepartements();
             });
           });
 
+        });
+
+        $(document).ready(function(){
+          $("#aboutOverview").hide();
+          $("#close").click(function(){
+            showAbout();
+          });
+        });
+        
+        $(document).ready(function(){
+          $("#contactOverview").hide();
+          $("#close").click(function(){
+            showContact();
+          });
         });
 
         </script>
