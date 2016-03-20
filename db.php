@@ -3,16 +3,34 @@
 ini_set('session.save_path', 'sessions');
 session_start();
 
-function Connect_db(){
-	$host="iutdoua-webetu.univ-lyon1.fr";
-	$user="p1402965";
-	$password="212498";
-	$bdname="p1402965";
+function getPropertyValue($str){
+	preg_match('~=(.*?);~', $str, $output);
+	return $output[1];
+}
 
-	/*$host="localhost";
-	$user="root";
-	$password="";
-	$bdname="ptut";*/
+function getProperties(){
+	$file = fopen("connexion.properties", "r");
+	$properties["host"] = getPropertyValue(fgets($file));
+	$properties["user"] = getPropertyValue(fgets($file));
+	$properties["password"] = getPropertyValue(fgets($file));
+	$properties["bdname"] = getPropertyValue(fgets($file));
+	
+	return $properties;
+}
+
+function Connect_db(){
+	if(($properties = getProperties()) != null){
+		$host=$properties["host"];
+		$user=$properties["user"];
+		$password=$properties["password"];
+		$bdname=$properties["bdname"];
+	}
+	else{
+		$host="localhost";
+		$user="root";
+		$password="";
+		$bdname="ptut";
+	}
 
 	try{
 		$bdd = new PDO('mysql:host='.$host.';dbname='.$bdname.
@@ -121,7 +139,7 @@ function updateDpt($nomDept, $desc, $lat, $lng, $idDepartement){
 	 lat = ?,
 	 lng = ?
 	 where idDepartement = ". $idDepartement;
-	 
+
     $query = $bdd -> prepare($SQL_Query);
     $query->bindParam(1, $nomDept);
     $query->bindParam(2, $desc);
@@ -136,7 +154,7 @@ function deleteDpt($idDepartement){
 
 	$bdd = Connect_db();
 	$SQL_Query = "delete from Departement where idDepartement = ". $idDepartement;
-	
+
 	$query = $bdd -> prepare($SQL_Query);
     $query->execute();
 
