@@ -7,7 +7,8 @@ if(isConnected()) header("Location: modifier.php");
     <meta charset="utf-8">
     <title>Visite virtuelle de la Doua - ajout de département</title>
     <link rel="stylesheet" href="style/adminStyle.css" />
-    <script src="js/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.2.js" integrity="sha256-VUCyr0ZXB5VhBibo2DkTVhdspjmxUgxDGaLQx7qb7xY=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI=" crossorigin="anonymous"></script>
 
   </head>
   <body>
@@ -15,7 +16,7 @@ if(isConnected()) header("Location: modifier.php");
     	<h1>Page administrateur</h1>
       <h2>Connexion</h2>
 
-      <?php  
+      <?php
       if(isset($_GET["err"])){
         if($_GET["err"] == 1) echo("<p class = 'err'>L'identifiant ou le mot de passe est invalide</p>");
         else if($_GET["err"] == 2) echo("<p class = 'err'>Formulaire incomplet</p>");

@@ -1,4 +1,4 @@
-<?php include("./db.php"); 
+<?php include("./db.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,18 +7,20 @@
     <title>Visite virtuelle de la Doua - ajout de département</title>
     <link rel="stylesheet" href="style/adminStyle.css" />
     <link rel="stylesheet" href="style/dropzone.css" />
-    <script src="js/jquery.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.2.js" integrity="sha256-VUCyr0ZXB5VhBibo2DkTVhdspjmxUgxDGaLQx7qb7xY=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI=" crossorigin="anonymous"></script>
     <script src = "js/dropzone.js"></script>
 
   </head>
-  <?php 
+  <?php
   if(isConnected()){
-    include('header.php'); 
+    include('header.php');
     ?>
 
   <body>
   <div class="form-basic">
     <h1>Ajoutez des images</h1>
+    <p><br/>Déposez des images ou cliquez pour en ajouter</p>
     <form action = "upload.php" class = "dropzone" id = "imgAdd"></form>
 
       <script>
@@ -62,7 +64,7 @@
       <p><a href="modifier.php"><img src = "images/ok.png" width = "15px"/>Terminer</a></p>
     <div>
   </body>
-  
+
   <?php }
   else {
     echo("<p class = 'err'>Erreur de connexion</p><p>Vous allez être redirigé vers la page de connexion</p>");

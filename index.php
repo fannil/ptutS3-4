@@ -1,41 +1,5 @@
 <?php include("./db.php");
-//$dpts = getIdDepartements();
-$dpts[0] = 1;
-/*
-foreach($dpts as $idDepartement){
-  $infos = getInfos($idDepartement);
-  ?>
-  var contentString<?php echo $idDepartement; ?> = '<div id=\"content\">'+
-  '<h1 id=\"firstHeading\" class=\"firstHeading\"><?php echo $infos['titre']; ?></h1>' +
-  '<div id=\"bodyContent\">'+
-  '<p> <?php echo $infos['description']; ?></p>'+
-  '<div class="imgLinks">' +
-  <?php
-  $images = getImages($idDepartement);
-  if($images.length != 0) {
-    $aTag = '<a href=\"#\" onclick=\'jQuery.slimbox([';
-    $imgs = "";
-    $first = true;
-  foreach($images as $image){
-    if($first){
-      $aTag .= '["dptImg/' . $idDepartement . '/' . $image["link"] . '", "' . $image["nom"] . '"]';
-      $first = false;
-    }
-    else{
-      $aTag .= '["dptImg/' . $idDepartement . '/' . $image["link"] . '", "' . $image["nom"] . '"]';
-    }
-    $imgs .= '<img src = "' . $image["link"] . '" alt = "' . $image["nom"] . '" />';
-  }
-
-  $aTag .= '], 0);return false;\' rel="groupe' . $idDepartement . '">';
-  echo ( '\'' . $aTag . '\' + \n\'');
-  echo ( '\'' . $imgs . ' </a>\' + \n');
-  //var_dump($aTag . "\n\n" . $imgs);die;
-}}
-
-die;
-//var_dump(getImages(1));die();
-*/
+$dpts = getIdDepartements();
 
 ?>
 
@@ -57,11 +21,12 @@ die;
   </style>
 
   <link rel="stylesheet" href="style/style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="http://code.jquery.com/jquery-1.12.2.js" integrity="sha256-VUCyr0ZXB5VhBibo2DkTVhdspjmxUgxDGaLQx7qb7xY=" crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js" integrity="sha256-DI6NdAhhFRnO2k51mumYeDShet3I8AKCQf/tf7ARNhI=" crossorigin="anonymous"></script>
   <!-- slimbox -->
   <link rel="stylesheet" href="style/slimbox/slimbox2.css" type="text/css" />
   <script type="text/javascript" src="js/slimbox2.js"></script>
+  <script type="text/javascript" src="js/overview.js"></script>
 
   <script> var mapMarkers = []; </script>
 
@@ -210,50 +175,6 @@ die;
         </script>
 
         <script>
-        var showed = false;
-        function showDpts(){
-          //$('#dptsOverview').toggle('slow', function(){});
-          if(showed){
-            $("#dptsOverview").hide('slide', {direction: 'left'}, 200);
-            showed = false;
-          }
-          else{
-            $("#dptsOverview").show('slide', {direction: 'left'}, 200);
-            showed = true;
-            if(showedcont) showContact();
-            if(showedab) showAbout();
-          }
-        }
-
-        var showedab = false;
-        function showAbout(){
-          //$('#aboutOverview').toggle('slow', function(){});
-          if(showedab){
-            $("#aboutOverview").hide('slide', {direction: 'left'}, 200);
-            showedab = false;
-          }
-          else{
-            $("#aboutOverview").show('slide', {direction: 'left'}, 200);
-            showedab = true;
-            if(showedcont) showContact();
-            if(showed) showDpts();
-          }
-        }
-
-        var showedcont = false;
-        function showContact(){
-          //$('#aboutOverview').toggle('slow', function(){});
-          if(showedcont){
-            $("#contactOverview").hide('slide', {direction: 'left'}, 200);
-            showedcont = false;
-          }
-          else{
-            $("#contactOverview").show('slide', {direction: 'left'}, 200);
-            showedcont = true;
-            if(showed) showDpts();
-            if(showedab) showAbout();
-          }
-        }
 
         $(document).ready(function(){
           //Assigner l'action à la croix de fermeture pour chaque panneau

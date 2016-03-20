@@ -9,12 +9,12 @@ function getPropertyValue($str){
 }
 
 function getProperties(){
-	$file = fopen("connexion.properties", "r");
+	$file = fopen("Restricted/connexion.properties", "r");
 	$properties["host"] = getPropertyValue(fgets($file));
 	$properties["user"] = getPropertyValue(fgets($file));
 	$properties["password"] = getPropertyValue(fgets($file));
 	$properties["bdname"] = getPropertyValue(fgets($file));
-	
+
 	return $properties;
 }
 
