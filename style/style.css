@@ -34,6 +34,7 @@ body{
 	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
 	font-size:18px;
 	font-weight:bold;
+	color:white;
 	letter-spacing:0.6px;
 	white-space:nowrap;
 	line-height:39px;
@@ -90,8 +91,7 @@ body{
 #navigationMenu .home {	background-position:0 0;}
 #navigationMenu .home:hover {	background-position:0 -39px;}
 #navigationMenu .home span{
-	background-color:#a0db8e;
-	color:#3d4f0c;
+	background-color:#a0db8e; 
 	text-shadow:1px 1px 0 #99bf31;
 }
 
@@ -101,7 +101,7 @@ body{
 #navigationMenu .about:hover { background-position:-38px -39px;}
 #navigationMenu .about span{
 	background-color:#1e8bb4;
-	color:#223a44;
+	 
 	text-shadow:1px 1px 0 #44a8d0;
 }
 
@@ -110,8 +110,7 @@ body{
 #navigationMenu .contact { background-position:-152px 0;}
 #navigationMenu .contact:hover { background-position:-152px -39px;}
 #navigationMenu .contact span{
-	background-color:#f2718b;
-	color:#ffdab9;
+	background-color:#f2718b; 
 	text-shadow:1px 1px 0 #d244a6;
 }
 /* purple Button*/
@@ -119,8 +118,7 @@ body{
 #navigationMenu .marq {	background-position:0 0;}
 #navigationMenu .marq:hover {	background-position:0 -39px;}
 #navigationMenu .marq span{
-	background-color:#8040A4;
-	color:#0C032A;
+	background-color:#8040A4; 
 	text-shadow:1px 1px 0 #8265A6;
 }
 /* Beige Button*/
@@ -128,8 +126,7 @@ body{
 #navigationMenu .admin {background-position:0 0;}
 #navigationMenu .admin:hover {	background-position:0 -39px;}
 #navigationMenu .admin span{
-	background-color:#EC8816;
-	color:#3d4f0c;
+	background-color:#EC8816; 
 	text-shadow:1px 1px 0 #EAB373;
 }
 div#menu{
